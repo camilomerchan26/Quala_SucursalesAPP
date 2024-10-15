@@ -1,0 +1,44 @@
+<div class="container" *ngIf="showFormMonedas">
+    <legend>Creacion</legend>
+    <form [formGroup]="formReporte" (ngSubmit)="onSubmitCrear()">
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripcion</label>
+            <input type="text" name="descripcion" class="form-control" formControlName="descripcion" id="descripcion" />
+        </div>
+      
+        <div class="mb-3">
+            <label for="identificacion" class="form-label">Identificacion</label>
+            <input type="text" name="identificacion" class="form-control" formControlName="identificacion" id="identificacion" />
+
+        </div>
+       
+        <div class="mb-3">
+            <label for="idCiudad" class="form-label">Ciudad</label>
+            <input type="number" name="idCiudad" class="form-control" formControlName="idCiudad" id="idCiudad" />
+        </div>
+        
+        <div class="mb-3">
+            <label for="direccion" class="form-label">Direccion</label>
+            <input type="text" name="direccion" class="form-control" formControlName="direccion"
+                id="direccion" />
+        </div>
+
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input type="number" name="telefono" class="form-control" formControlName="telefono"
+                id="telefono" />
+        </div>
+
+        <div class="mb-3">
+            <label for="idMoneda" class="form-label">Moneda</label>
+                <select class="form-select" id="idMoneda" formControlName="idMoneda" style="width: 9em">
+                    <option selected value="">Seleccionar...</option>
+                    <option *ngFor="let type of listoMonedas" [value]="type.id">{{ type.nombreMoneda }}</option>
+                </select>
+        </div>
+     
+        <button type="submit" (click)="crear()" class="btn btn-primary" [disabled]="formReporte.invalid">Crear</button>
+        <button class="btn btn-primary" routerLink="/crud" >Volver</button>
+       
+    </form>
+</div>

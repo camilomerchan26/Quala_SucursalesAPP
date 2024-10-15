@@ -1,0 +1,17 @@
+:host /deep/ ng2-smart-table thead > tr > th  { 
+    background-color:#198754!important;  
+}
+
+:host /deep/ ng2-smart-table-title a:focus { color: #fff; }
+
+:host /deep/ ng2-smart-table thead > tr > th > div { color: #fff; }
+
+:host /deep/ td.ng2-smart-actions a {cursor: pointer;color: #198754!important; }
+
+:host /deep/ ng2-smart-table-title a::content { color: #fff; }
+
+ .center {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }    

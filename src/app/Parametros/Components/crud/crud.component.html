@@ -1,0 +1,131 @@
+<form [formGroup]="formReporte" (ngSubmit)="onSubmitConsultar()">
+
+    <div class="col-md-16">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Sucursales Quala</a>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-white bg-white ">
+        <div class="d-flex justify-content-start">
+            <button class="btn btn-primary" routerLink="/crud/creacion">Agregar</button>
+        </div>
+        <div class="d-flex justify-content-start">
+            <button class="btn btn-success" type="submit" (click)="consultar()">Consultar</button>
+        </div>
+    </nav>
+    </div>
+
+    <div *ngIf="showTable" id="dv2" runat="server" visible="false">
+
+        <div *ngIf="tableshow" class="row">
+            <div class="col-md-16">
+
+                <div class="table table-responsive smart-table">
+                    <ng2-smart-table [settings]="settings" [source]="listaSucursal" (edit)="editar($event)"
+                        (delete)="eliminar($event)">
+
+                    </ng2-smart-table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+</form>
+
+<ng-template #modalContent let-modal>
+    <div class="modal-header btn-success">
+      <h4 class="modal-title" id="modal-basic-title">Editar Sucursal</h4>
+    
+      <button type="button" (click)="modal.dismiss('Cross click')" class="btn-close btn-close-white " data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form class="form-group m-t-30" autocomplete="off" [formGroup]="viewDetailsForm">
+        <div class="row space">
+                      
+             <div class="col-md-8">
+                
+                <label for="edit_validityproduct" class="colorTitle">descripcion</label>
+                           <input
+                            type="text"
+                            id="descripcion" 
+                            name="descripcion"
+                            formControlName="descripcion"
+                            class="form-control">
+             </div>
+
+            <div class="col-md-4">
+
+                <label for="edit_validityproduct" class="colorTitle" >Estado</label>
+                <select class="form-select" id="estado" formControlName="estado">
+                    <option value=""> Seleccione -</option>                    
+                    <option [ngValue]="true">Activo</option>
+                    <option [ngValue]="false">Inactivo</option>
+                </select>
+              
+             </div>
+            <div class="col-md-4">
+                
+                <label for="edit_validityproduct" class="colorTitle">identificacion</label>
+                           <input
+                            type="text"
+                            id="identificacion" 
+                            name="identificacion"
+                            formControlName="identificacion"
+                            class="form-control">
+             </div>
+
+             <div class="col-md-8">
+                
+                <label for="edit_validityproduct" class="colorTitle">Ciudad</label>
+                           <input
+                            type="number"
+                            id="idCiudad" 
+                            name="idCiudad"
+                            formControlName="idCiudad"
+                            class="form-control">
+             </div>
+             <div class="col-md-6">
+                
+                <label for="edit_validityproduct" class="colorTitle">Direccion</label>
+                           <input
+                            type="text"
+                            id="direccion" 
+                            name="direccion"
+                            formControlName="direccion"
+                            class="form-control">
+             </div>
+             <div class="col-md-6">
+                
+                <label for="edit_validityproduct" class="colorTitle">Moneda</label>
+                <select class="form-select" id="idMoneda" formControlName="idMoneda" style="width: 9em">
+                    <option selected value="">Seleccionar...</option>
+                    <option *ngFor="let type of listoMonedas" [value]="type.id">{{ type.nombreMoneda }}</option>
+                </select>
+             </div>
+           
+             <div class="col-md-6">
+                
+                <label for="edit_validityproduct" class="colorTitle">Telefono</label>
+                           <input
+                            type="text"
+                            id="telefono" 
+                            name="telefono"
+                            formControlName="telefono"
+                            class="form-control">
+             </div>
+
+        </div>
+
+    </form>
+    </div>
+    <div class="modal-footer">
+
+      <button type="button" class="btn btn-success" (click)="acceptModal()">Editar</button>
+      <button type="button" class="btn btn-outline-danger" (click)="closeModal()">Cerrar</button>
+         
+    </div>
+  </ng-template>
